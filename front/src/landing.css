@@ -1,0 +1,142 @@
+/* Aplica la fuente Roboto a todo el contenido */
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mantén las reglas básicas */
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ajuste en .flexSections para centrar */
+.flexSections {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  padding: 0 5%; /* Reduce el padding para acercar los elementos */
+}
+
+.flexSections.right .leftSection {
+  order: 1;
+}
+
+.flexSections.right .rightSection {
+  order: 2;
+}
+
+.flexSections.left .rightSection {
+  order: 1;
+}
+
+.flexSections.left .leftSection {
+  order: 2;
+}
+
+/* Ajuste en .sectionContent para centrar */
+.sectionContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  width: 100%;
+  max-width: 1200px; /* Ajusta según el ancho deseado */
+  margin: 0 auto; /* Centra el contenido en el contenedor */
+}
+
+.textWhite {
+  color: white;
+}
+
+/* Ajuste para el grosor y el ancho de los textos */
+.textContent h1, .textContent p {
+  font-weight: 300; /* Cambia el grosor de la fuente */
+  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
+  width: 80%; /* Reduce el ancho del texto en un 20% */
+  display: flex;
+  margin: 0 auto; /* Centra el texto en el contenedor */
+}
+
+.leftSection, .rightSection {
+  flex: 1;
+  padding-right: 5%;  /* Reduce padding para centrar mejor */
+  padding-left: 5%;  /* Reduce padding para centrar mejor */
+  align-content: center;
+}
+
+.leftSection img,
+.rightSection img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilos para iconos */
+.iconWhite {
+  filter: brightness(0) invert(1); /* Cambia a blanco */
+}
+
+.iconBlack {
+  filter: brightness(0); /* Cambia a negro */
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  gap: 1.5rem; /* Ajusta el valor según el espacio que desees entre título, contenido y icono */
+}
+
+/* Opcional: Si necesitas un tamaño fijo, usa propiedades específicas */
+.textContent .iconWhite, .textContent .iconBlack {
+  width: 40px; /* Cambia a los valores anteriores */
+  height: 40px; /* Cambia a los valores anteriores */
+}
+
+.appStoreContainer {
+  display: flex;
+  align-items: flex-start; /* Opcional: centrar horizontalmente */
+  gap: 2rem; /* Ajusta el espacio entre las imágenes */
+  margin-top: 1.5rem; /* Opcional: añadir un margen superior si es necesario */
+}
+
+.appImageContainer {
+  display: flex;
+  align-items: flex-start; /* Alinea la imagen al inicio del contenedor */
+  gap: 2rem; /* Ajusta el espacio entre las imágenes si es necesario */
+  margin-bottom: 1.5rem; /* Opcional: añade un margen superior si es necesario */
+}
+
+.textContent h1 {
+  font-weight: 420; /* Ajusta el grosor del título a ligeramente más grueso */
+  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
+  width: 80%; /* Reduce el ancho del texto en un 20% */
+  display: flex;
+  font-size: 2.2rem;
+  margin: 0 auto; /* Centra el texto en el contenedor */
+}
+
+.textContent p {
+  font-weight: 300; /* Mantiene el grosor de la fuente para el párrafo */
+  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
+  width: 80%; /* Reduce el ancho del texto en un 20% */
+  display: flex;
+  margin: 0 auto; /* Centra el texto en el contenedor */
+}
+
