@@ -69,15 +69,28 @@ html,
 .textContent h1, .textContent p {
   font-weight: 300; /* Cambia el grosor de la fuente */
   letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
-  width: 80%; /* Reduce el ancho del texto en un 20% */
+  width: 100%; /* Ajusta el ancho del texto si es necesario */
   display: flex;
-  margin: 0 auto; /* Centra el texto en el contenedor */
+  margin-left: 0; /* Elimina el margen izquierdo */
+  
 }
 
+.textContent h1 {
+  font-weight: 400; /* Ajusta el grosor del título a ligeramente más grueso */
+  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
+  font-size: 2.2rem;
+}
+
+.textContent p {
+  font-weight: 250; /* Mantiene el grosor de la fuente para el párrafo */
+  font-size: 1.5rem;
+}
+
+/* Ajustes en las secciones */
 .leftSection, .rightSection {
   flex: 1;
-  padding-right: 5%;  /* Reduce padding para centrar mejor */
-  padding-left: 5%;  /* Reduce padding para centrar mejor */
+  padding-right: 8%; /* Reduce padding para centrar mejor */
+  padding-left: 8%; /* Reduce padding para centrar mejor */
   align-content: center;
 }
 
@@ -122,21 +135,11 @@ html,
   gap: 2rem; /* Ajusta el espacio entre las imágenes si es necesario */
   margin-bottom: 1.5rem; /* Opcional: añade un margen superior si es necesario */
 }
-
-.textContent h1 {
-  font-weight: 420; /* Ajusta el grosor del título a ligeramente más grueso */
-  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
-  width: 80%; /* Reduce el ancho del texto en un 20% */
-  display: flex;
-  font-size: 2.2rem;
-  margin: 0 auto; /* Centra el texto en el contenedor */
+.pWithMargin {
+  margin-left: 0;
+  margin-right: 20%;
 }
 
-.textContent p {
-  font-weight: 300; /* Mantiene el grosor de la fuente para el párrafo */
-  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
-  width: 80%; /* Reduce el ancho del texto en un 20% */
-  display: flex;
-  margin: 0 auto; /* Centra el texto en el contenedor */
+.pNoMargin {
+  margin: 0; /* Sin márgenes */
 }
-

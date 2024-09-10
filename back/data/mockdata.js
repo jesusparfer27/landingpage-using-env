@@ -12,7 +12,8 @@ export const sections = [
         isTextAndImagesInWhite: true,
         isIconImageWhite: false,
         isMockupAtTop: false,
-        isTextContainer: true
+        isTextContainer: true,
+        isPMarginIn: false
     },
     {
         id: 2,
@@ -25,8 +26,8 @@ export const sections = [
         isIconImageWhite: true,
         isTextAndImagesInWhite: true,
         isMockupAtTop: true,
-        isTextContainer: true
-
+        isTextContainer: true,
+        isPMarginIn: false
     },
     {
         id: 3,
@@ -39,7 +40,8 @@ export const sections = [
         isTextAndImagesInWhite: true,
         isIconImageWhite: true,
         isMockupAtTop: true,
-        isTextContainer: true
+        isTextContainer: true,
+        isPMarginIn: false
 
     },
     {
@@ -52,7 +54,8 @@ export const sections = [
         isImageRight: true,
         isIconImageWhite: false,
         isMockupAtTop: false,
-        isTextContainer: false
+        isTextContainer: false,
+        isPMarginIn: false
 
     },
     {
@@ -66,6 +69,46 @@ export const sections = [
         isIconImageWhite: true,
         isMockupAtTop: false,
         isTextAndImagesInWhite: true,
-        isTextContainer: true
+        isTextContainer: true,
+        isPMarginIn: false
     }
 ];
+
+export const appAdvantages = [
+    {
+        id: 1,
+        advantagesImages: "container-6/gmail.png",
+        content: "Works with Gmail, iCloud & IMAP",
+        color: "#007AFF"
+    },
+    {
+        id: 2,
+        advantagesImages: "container-6/process.png",
+        content: "All processing happens on device",
+        color: "#FFB800"
+    },
+    {
+        id: 3,
+        advantagesImages: "container-6/security.png",
+        content: "Your data is yours to stay",
+        color: "#FF2D55"
+    },
+    {
+        id: 4,
+        advantagesImages: "container-6/darkmode.png",
+        content: "Supports dark mode",
+        color: "#000000"
+    },
+    {
+        id: 5,
+        advantagesImages: "container-6/free.png",
+        content: "Free to use. Or pay for more features.",
+        color: "#7000FF"
+    },
+    {
+        id: 6,
+        advantagesImages: "container-6/maintenant.png",
+        content: "Built & maintained by indie developers",
+        color: "#FFFFFF"
+    },
+]
