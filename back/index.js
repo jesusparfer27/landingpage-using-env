@@ -24,11 +24,14 @@ app.get('/', ( req , res ) => {
 
 app.get('/API/v1/landing' , ( req , res ) => {
 
-    const landingData = sections;
-    const sectionAdvantages = appAdvantages
+    
+    const datos = {
+        sections: sections,
+        appAdvantages: appAdvantages
+    }
 
-    res.status(200).json(landingData)
-    res.status(200).json(sectionAdvantages)
+    res.status(200).json(datos)
+  
 });
 
 app.listen(PORT, () => {

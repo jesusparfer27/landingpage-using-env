@@ -16,12 +16,11 @@ const Layout = () => {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
-            const landingContent = await response.json();
-            const sectionAdvantages = await response.json()
-            setLandingContent(landingContent);
-            setSectionAdvantages(sectionAdvantages);
-            console.log(sectionAdvantages)
-            console.log(landingContent);
+            const respuesta = await response.json();
+            
+            setLandingContent(respuesta.sections);
+            setSectionAdvantages(respuesta.appAdvantages);
+            console.log(respuesta)
         } catch (err) {
             console.log(err, "error");
         }
@@ -147,7 +146,7 @@ const Layout = () => {
                                                 }}
                                                 src={`http://localhost:3000/${mockupImg}`}
                                                 alt="Mockup"
-                                            />
+                                            />  
                                         </div>
                                     </>
                                 )}
@@ -156,14 +155,14 @@ const Layout = () => {
                     </div>
                 ))}
                 <section className="advantagesSection">
-                    {
+                    {   
                         sectionAdvantages.map(({
                             id,
                             advantagesImages,
                             content,
                             color
                         }) => (
-                            <div className="advantagesBlocks" key={id} style={`backgroundColor: ${color}`}>
+                            <div className="advantagesBlocks" key={id} style={{backgroundColor: color}}>
                                 <img className="advantagesImg" src={advantagesImages} alt="" />
                                 <strong>{content}</strong>
                             </div>
