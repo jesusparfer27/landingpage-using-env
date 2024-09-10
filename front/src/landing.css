@@ -143,3 +143,32 @@ html,
 .pNoMargin {
   margin: 0; /* Sin márgenes */
 }
+
+/* SEGUNDA SECCIÓN */
+
+.advantagesSection {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: 230px 200px;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #F2F2F2;
+}
+
+.advantagesBlocks {
+  border-radius: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+}
+
+.advantagesImgBlocks {
+
+}
+
+.textAppAdvantages {
+  
+ 
+}

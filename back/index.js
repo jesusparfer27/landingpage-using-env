@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { HOST, PORT } from './config/config.js'
-import { sections, appAdvantages } from './data/mockdata.js'
+import { sections, appAdvantages, footer, comments } from './data/mockdata.js'
 
 const app = express()
 
@@ -27,7 +27,9 @@ app.get('/API/v1/landing' , ( req , res ) => {
     
     const datos = {
         sections: sections,
-        appAdvantages: appAdvantages
+        appAdvantages: appAdvantages,
+        footer: footer,
+        comments: comments
     }
 
     res.status(200).json(datos)

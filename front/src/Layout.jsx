@@ -1,10 +1,11 @@
-import Footer from "./components/Footer";
-import React, { useState, useEffect } from 'react'; // Importa React para asegurarte de que useState esté definido
+import { useState, useEffect } from 'react'; // Importa React para asegurarte de que useState esté definido
 import './landing.css'; // Importar el archivo CSS
 
 const Layout = () => {
     const [landingContent, setLandingContent] = useState([]);
     const [sectionAdvantages, setSectionAdvantages] = useState([]);
+    const [footerContent, setFooterContent] = useState([])
+    const [commentsContent, setCommentsContent] = useState([])
 
     useEffect(() => {
         getData();
@@ -17,9 +18,11 @@ const Layout = () => {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
             const respuesta = await response.json();
-            
+
             setLandingContent(respuesta.sections);
             setSectionAdvantages(respuesta.appAdvantages);
+            setFooterContent(respuesta.footer)
+            setCommentsContent(respuesta.comments)
             console.log(respuesta)
         } catch (err) {
             console.log(err, "error");
@@ -73,10 +76,6 @@ const Layout = () => {
                                                 )}
                                             </div>
                                             <div className="textContent roboto-regular">
-                                                <h1 className={isTextAndImagesInWhite ? 'textWhite' : ''}>{titulo}</h1>
-                                                <p className={`${isTextAndImagesInWhite ? 'textWhite' : ''} ${!isPMarginIn ? 'no-margin' : ''}`}>
-                                                    {contenido}
-                                                </p>
                                                 {iconImage && (
                                                     <img
                                                         src={`http://localhost:3000/${iconImage}`}
@@ -85,6 +84,11 @@ const Layout = () => {
                                                         style={{ maxWidth: '100%' }}
                                                     />
                                                 )}
+                                                <h1 className={isTextAndImagesInWhite ? 'textWhite' : ''}>{titulo}</h1>
+                                                <p className={`${isTextAndImagesInWhite ? 'textWhite' : ''} ${!isPMarginIn ? 'no-margin' : ''}`}>
+                                                    {contenido}
+                                                </p>
+
                                             </div>
                                             <div className="appStoreContainer">
                                                 {imgAppStore && (
@@ -112,10 +116,6 @@ const Layout = () => {
                                                 )}
                                             </div>
                                             <div className="textContent roboto-regular">
-                                                <h1 className={isTextAndImagesInWhite ? 'textWhite' : ''}>{titulo}</h1>
-                                                <p className={`${isTextAndImagesInWhite ? 'textWhite' : ''} ${!isPMarginIn ? 'no-margin' : ''}`}>
-                                                    {contenido}
-                                                </p>
                                                 {iconImage && (
                                                     <img
                                                         src={`http://localhost:3000/${iconImage}`}
@@ -124,6 +124,10 @@ const Layout = () => {
                                                         style={{ maxWidth: '100%' }}
                                                     />
                                                 )}
+                                                <h1 className={isTextAndImagesInWhite ? 'textWhite' : ''}>{titulo}</h1>
+                                                <p className={`${isTextAndImagesInWhite ? 'textWhite' : ''} ${!isPMarginIn ? 'no-margin' : ''}`}>
+                                                    {contenido}
+                                                </p>
                                             </div>
                                             <div className="appStoreContainer">
                                                 {imgAppStore && (
@@ -136,7 +140,7 @@ const Layout = () => {
                                                 )}
                                             </div>
                                         </div>
-                                        <div className="leftSection">
+                                        <div className="leftSection" >
                                             <img
                                                 className="mockupImg"
                                                 style={{
@@ -146,7 +150,7 @@ const Layout = () => {
                                                 }}
                                                 src={`http://localhost:3000/${mockupImg}`}
                                                 alt="Mockup"
-                                            />  
+                                            />
                                         </div>
                                     </>
                                 )}
@@ -155,22 +159,38 @@ const Layout = () => {
                     </div>
                 ))}
                 <section className="advantagesSection">
-                    {   
+                    {
                         sectionAdvantages.map(({
                             id,
                             advantagesImages,
                             content,
                             color
                         }) => (
-                            <div className="advantagesBlocks" key={id} style={{backgroundColor: color}}>
-                                <img className="advantagesImg" src={advantagesImages} alt="" />
-                                <strong>{content}</strong>
+                            <div className="advantagesBlocks" key={id} style={{ backgroundColor: color }}>
+                                <div className="advantageImg">
+                                    <img className="advantagesImgBlock" src={`http://localhost:3000/${advantagesImages}`} alt="" />
+                                </div>
+                                <strong className="textAppAdvantages">{content}</strong>
+                            </div>
+                        ))
+                    }
+                </section>
+                <section className="commentSection">
+                    {
+                        commentsContent.map(({
+                            id,
+                            imageComment,
+                            comment,
+                        }) => (
+                            <div className="commentBlock" key={id}>
+                                <p className="commentText">{comment}</p>
+                                <img src={`http://localhost:3000/${imageComment}`} alt="" />
+
                             </div>
                         ))
                     }
                 </section>
             </main>
-            <Footer />
         </>
     );
 };

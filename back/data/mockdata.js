@@ -112,3 +112,47 @@ export const appAdvantages = [
         color: "#FFFFFF"
     },
 ]
+
+export const comments = [
+    {
+        id: 1,
+        comment: "Since I’ve been using Triage, I’m more caught up on my email than I have been in years.",
+        imageComment: "container-7/daring-fireball.png.png",
+    },
+    {
+        id: 2,
+        comment: "If you're constantly battling to keep your email account at inbox zero, Triage for iOS could be worth a look.",
+        imageComment: "container-7/the-verge.svg.png",
+    },
+    {
+        id: 3,
+        comment: "Triage makes it feel seamless, and even fun, to achieve — if not Inbox Zero — at least Inbox Zen.",
+        imageComment: "container-7/macworld.svg.png",
+    },
+    {
+        id: 4,
+        comment: "Triage provides the first aid necessary to get your inbox back in fighting shape.",
+        imageComment: "container-7/maclife.png.png",
+    },
+    {
+        id: 5,
+        comment: "Triage is a boon to those who have struggled to keep their inboxes clean and organized.",
+        imageComment: "container-7/clean-email.png.png",
+    },
+    {
+        id: 6,
+        comment: "Triage is my new favorite email app for iPhone.",
+        imageComment: "container-7/macstories.png.png",
+    }
+]
+
+export const footer = [
+    {
+        id: 1,
+        imageFooter: "container-8/Frame.png"
+    },
+    {
+        id: 2,
+        imageFooter: "/container-8/svg.png"
+    }
+]
