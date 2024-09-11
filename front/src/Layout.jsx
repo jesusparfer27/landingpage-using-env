@@ -175,6 +175,7 @@ const Layout = () => {
                         ))
                     }
                 </section>
+                <h1 className='triageH1'>Praise for Triage 1</h1>
                 <section className="commentSection">
                     {
                         commentsContent.map(({
@@ -184,12 +185,24 @@ const Layout = () => {
                         }) => (
                             <div className="commentBlock" key={id}>
                                 <p className="commentText">{comment}</p>
+                                <div className="imgComments">
                                 <img src={`http://localhost:3000/${imageComment}`} alt="" />
-
+                                </div>
                             </div>
                         ))
                     }
                 </section>
+                <footer>
+                    {
+                        footerContent.map(({ id, imageFooter }) => (
+                            <div className="footerFlex" key={id}>
+                                <div className="footerBlock" >
+                                    <img src={`http://localhost:3000/${imageFooter}`} alt="" />
+                                </div>
+                            </div>
+                        ))
+                    }
+                </footer>
             </main>
         </>
     );

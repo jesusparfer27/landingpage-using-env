@@ -172,3 +172,47 @@ html,
   
  
 }
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  
+
+}
+
+.commentBlock {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding-top: 2.7rem;
+  padding-bottom: 3rem;
+  background-color: #e4e4e4;
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+  justify-content: space-between;
+  
+}
+
+.commentText {
+  font-size: 1.4rem;
+  font-weight: 320;
+  margin-bottom: 2rem;
+}
+
+.imgComments {
+
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.footerFlex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footerBlock {
+  
+}
