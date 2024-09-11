@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { HOST, PORT } from './config/config.js'
-import { sections, appAdvantages, footer, comments } from './data/mockdata.js'
+import apiRoutes from './routes/index.routes.js'
 
 const app = express()
 
@@ -22,19 +22,9 @@ app.get('/', ( req , res ) => {
     res.status(200).send(landingHTML)
 })
 
-app.get('/API/v1/landing' , ( req , res ) => {
+app.use("/API/v1/", apiRoutes)
 
-    
-    const datos = {
-        sections: sections,
-        appAdvantages: appAdvantages,
-        footer: footer,
-        comments: comments
-    }
 
-    res.status(200).json(datos)
-  
-});
 
 app.listen(PORT, () => {
     console.log(`Iniciando API en ${HOST}:${PORT}`)
