@@ -79,37 +79,43 @@ export const appAdvantages = [
         id: 1,
         advantagesImages: "container-6/gmail.png",
         content: "Works with Gmail, iCloud & IMAP",
-        color: "#007AFF"
+        color: "#007AFF",
+        isTextInWhite: true
     },
     {
         id: 2,
         advantagesImages: "container-6/process.png",
         content: "All processing happens on device",
-        color: "#FFB800"
+        color: "#FFB800",
+        isTextInWhite: false
     },
     {
         id: 3,
         advantagesImages: "container-6/security.png",
         content: "Your data is yours to stay",
-        color: "#FF2D55"
+        color: "#FF2D55",
+        isTextInWhite: true
     },
     {
         id: 4,
         advantagesImages: "container-6/darkmode.png",
         content: "Supports dark mode",
-        color: "#000000"
+        color: "#000000",
+        isTextInWhite: true
     },
     {
         id: 5,
         advantagesImages: "container-6/free.png",
         content: "Free to use. Or pay for more features.",
-        color: "#7000FF"
+        color: "#7000FF",
+        isTextInWhite: true
     },
     {
         id: 6,
         advantagesImages: "container-6/maintenant.png",
         content: "Built & maintained by indie developers",
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+        isTextInWhite: false
     },
 ]
 

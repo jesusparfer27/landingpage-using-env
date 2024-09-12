@@ -5,22 +5,56 @@
 
 
 //  Endpoint para devolver todos los correos
- export const getAllCorreos = async (req, res) => {
 
-    // Obtener lista de correos
-
-    // Conectarme a la base de datos y pedir los datos
-     const query = 'SELECT * FROM correos';
-     const [filas] = await mysqldb.query(query);
-     console.log(filas);
+export const loginUser = async (req, res) => {
+    const { email, password } = req.body;
     
-    // devolver al usuario sus correos
-     res.status(200).json({
-    msg: "Lista de correos obtenida con exito",
-    success: "ok",
-    data: filas
-    });
- }
+    try {
+        const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+        const [rows] = await mysqldb.query(query, [email, password]);
+        
+        if (rows.length > 0) {
+            // Usuario encontrado, credenciales correctas
+            res.status(200).json({
+                msg: "Inicio de sesión exitoso",
+                success: true
+            });
+        } else {
+            // Credenciales incorrectas
+            res.status(401).json({
+                msg: "Correo electrónico o contraseña incorrectos",
+                success: false
+            });
+        }
+    } catch (error) {
+        console.error("Error al iniciar sesión: ", error);
+        res.status(500).json({
+            msg: "Error al iniciar sesión",
+            success: false,
+            error: error.message
+        });
+    }
+};
+
+export const getAllCorreos = async (req, res) => {
+    try {
+        const query = 'SELECT * FROM correos';
+        const [filas] = await mysqldb.query(query);
+        res.status(200).json({
+            msg: "Lista de correos obtenida con éxito",
+            success: "ok",
+            data: filas
+        });
+    } catch (error) {
+        console.error("Error al obtener correos: ", error);
+        res.status(500).json({
+            msg: "Error al obtener los correos",
+            success: "error",
+            error: error.message
+        });
+    }
+};
+
 
  export const getLanding = ( req , res ) => {
 

@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'; // Importa React para asegurarte de que useState esté definido
-import './landing.css'; // Importar el archivo CSS
+import './css/landing.css'; // Importar el archivo CSS
+import Header from './components/Header'
+import ModalLogin  from './components/ModalLogin';
+import { useModal } from './context/ModalContext';
 
 const Layout = () => {
+
+    const { isModalOpen } = useModal()
+
     const [landingContent, setLandingContent] = useState([]);
     const [sectionAdvantages, setSectionAdvantages] = useState([]);
     const [footerContent, setFooterContent] = useState([])
@@ -13,7 +19,7 @@ const Layout = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/API/v1/landing');
+            const response = await fetch('http://localhost:3000/API/v1/json-data');
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
@@ -31,6 +37,8 @@ const Layout = () => {
 
     return (
         <>
+        <Header/>
+        {isModalOpen && <ModalLogin/>}
             <main>
                 {landingContent.map(({
                     id,
@@ -164,13 +172,16 @@ const Layout = () => {
                             id,
                             advantagesImages,
                             content,
-                            color
+                            color,
+                            isTextInWhite
                         }) => (
                             <div className="advantagesBlocks" key={id} style={{ backgroundColor: color }}>
                                 <div className="advantageImg">
                                     <img className="advantagesImgBlock" src={`http://localhost:3000/${advantagesImages}`} alt="" />
                                 </div>
-                                <strong className="textAppAdvantages">{content}</strong>
+                           
+                                <strong className={`textAppAdvantages ${isTextInWhite ? "textWhite" : ""}`}>{content}</strong>
+
                             </div>
                         ))
                     }

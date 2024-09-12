@@ -1,10 +1,14 @@
-import { StrictMode } from 'react'
+import { RouterProvider } from 'react-router-dom'
+import router from './lib/routes'
 import { createRoot } from 'react-dom/client'
-import Layout from './Layout'
+import React from 'react'
+import { ModalProvider } from './context/ModalContext'
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Layout />
-  </StrictMode>,
+  <React.StrictMode>
+    <ModalProvider>
+      <RouterProvider router={router} />
+    </ModalProvider>
+  </React.StrictMode>,
 )
