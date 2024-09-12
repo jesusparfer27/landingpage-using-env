@@ -3,6 +3,11 @@
 //  importar la consexión a mysql
  import mysqldb from '../data/mysqldb.js'
 
+ const responseAPI = {
+    data: [],
+    msg: "",
+    status: "ok"
+};
 
 //  Endpoint para devolver todos los correos
 
@@ -36,7 +41,7 @@ export const loginUser = async (req, res) => {
     }
 };
 
-export const getAllCorreos = async (req, res) => {
+export const getAllEmails = async (req, res) => {
     try {
         const query = 'SELECT * FROM correos';
         const [filas] = await mysqldb.query(query);
@@ -45,6 +50,7 @@ export const getAllCorreos = async (req, res) => {
             success: "ok",
             data: filas
         });
+        console.log(filas)
     } catch (error) {
         console.error("Error al obtener correos: ", error);
         res.status(500).json({
@@ -69,3 +75,59 @@ export const getAllCorreos = async (req, res) => {
     res.status(200).json(datos)
   
 }
+
+export const saveEmail = (req, res) => {
+    try {
+        const newEmail = req.body;
+
+        // Verifica que el correo tenga los campos necesarios
+        if (!newEmail.id || !newEmail.from || !newEmail.to || !newEmail.subject || !newEmail.body || !newEmail.statement) {
+            console.log('Campos recibidos:', newEmail); // Log para depuración
+            return res.status(400).json({
+                status: 'error',
+                msg: 'Faltan campos necesarios en la solicitud.'
+            });
+        }
+
+        // Añade el nuevo correo al array `savedEmails`
+        savedEmails.push(newEmail);
+
+        res.status(201).json({
+            status: 'ok',
+            msg: 'Correo electrónico guardado con éxito.',
+            data: newEmail
+        });
+    } catch (error) {
+        console.error("Error al guardar el correo:", error);
+
+        res.status(500).json({
+            status: 'error',
+            msg: 'Error al guardar el correo electrónico.'
+        });
+    }
+};
+
+export const getSavedEmails = (req, res) => {
+    try {
+        if (savedEmails.length === 0) {
+            return res.status(204).json({
+                status: 'ok',
+                msg: 'No hay correos guardados.',
+                data: []
+            });
+        }
+
+        res.status(200).json({
+            status: 'ok',
+            msg: 'Correos guardados obtenidos con éxito.',
+            data: savedEmails
+        });
+    } catch (error) {
+        console.error("Error al obtener los correos guardados:", error);
+
+        res.status(500).json({
+            status: 'error',
+            msg: 'Error al obtener los correos guardados.'
+        });
+    }
+};

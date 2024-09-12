@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout";
 import { InboxPage } from "../pages/InboxPage";
 import { ErrorPage } from "../pages/ErrorPage";
+import { LandingPage } from "../pages/LandingPage";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -10,8 +11,8 @@ const router = createBrowserRouter([{
     children: [
         {
             index: true,
-            path: '/about-us',
-            element: <Layout/>
+            path: '/',
+            element: <LandingPage/>
         },
         {
             path: '/inbox',
