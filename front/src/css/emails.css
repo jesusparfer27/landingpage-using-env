@@ -5,17 +5,45 @@
     margin-right: 4rem;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+    padding: 0 2rem; /* Agrega un padding para uniformar el espacio desde los bordes */
 }
 
 .emailInformation {
     display: flex;
+    flex-direction: row;
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 1rem; /* Ajusta el espacio entre los elementos */
+    padding: 1rem 0; /* Ajusta el padding superior e inferior */
 }
 
-.columnNav {
+.emailActions {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: row;
+    gap: 0.5rem; /* Espacio entre los botones */
 }
+
+.buttonsModal {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.buttonsModal:hover {
+    color: gray;
+}
+
+.emailName {
+    flex-shrink: 0; /* Evita que el nombre se reduzca */
+    width: 10rem; /* Define un ancho fijo para mantener alineación con otros elementos */
+}
+
+.emailContent {
+    flex-grow: 1; /* Permite que el contenido se expanda */
+    padding-left: 1rem; /* Añade espacio a la izquierda para separar del nombre */
+}
+
+
 
 .emailInformation {
     padding: 1rem;

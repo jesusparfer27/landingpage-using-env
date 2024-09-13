@@ -47,21 +47,24 @@ export const EmailsModal = ({ type }) => {
 
     return (
         <section className='emailModal'>
-            {emailList.map(({ id, remitente_id, destinatario_id, asunto, contenido, leido, created_at, nombre }) => (
-                <div key={id}>
-                    <div className="emailInformation">
-                        <p>{nombre}</p>
-                        <p>{contenido}</p>
-                        <button className='buttonsModal'>
-                            <span className="material-symbols-outlined">delete</span>
-                        </button>
-                        <button className='buttonsModal'>
+    {emailList.map(({ id, remitente_id, destinatario_id, asunto, contenido, leido, created_at, nombre }) => (
+        <div key={id}>
+            <div className="emailInformation">
+                <div className="emailActions">
+                    <button className='buttonsModal'>
+                        <span className="material-symbols-outlined">delete</span>
+                    </button>
+                    <button className='buttonsModal'>
                         <span className="material-symbols-outlined">bookmark</span>
-                        </button>
-                    </div>
-                    <hr />
+                    </button>
                 </div>
-            ))}
-        </section>
+                <strong className="emailName">{nombre}</strong>
+                <p className="emailContent">{contenido}</p>
+            </div>
+            <hr />
+        </div>
+    ))}
+</section>
+
     );
 };
