@@ -1,0 +1,39 @@
+.inboxPage {
+    display: flex;
+    width: 100%;
+    background-color: rgb(224, 224, 224);
+}
+
+.columnNav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    width: 20%;
+    padding-left: 3rem;
+    padding-top: 3rem;
+}
+
+.columnNav a {
+    display: flex; /* Para alinear el ícono y el texto en línea */
+    align-items: center; /* Centrar verticalmente */
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del contenedor */
+    gap: 2rem; /* Espacio entre el ícono y el texto */
+}
+
+.columnNav a:hover {
+    background-color: gold;
+    width: 80%;
+    padding: .5rem;
+    border-radius: 3rem;
+    background-color: rgb(187, 187, 187);
+}
+
+.columnNav a.active {
+    font-weight: bold; /* Ejemplo de estilo para el enlace activo */
+    color: black; /* Cambia el color del enlace activo */
+}
+
+.contentSection {
+    width: 100%;
+}

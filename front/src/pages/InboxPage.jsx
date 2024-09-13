@@ -1,48 +1,41 @@
-import { useState, useEffect } from 'react'
+// InboxPage.jsx
+import { NavLink, Routes, Route } from 'react-router-dom';
+import { EmailsModal } from '../components/EmailsModal'; // Importa tu componente EmailsModal
+import '../css/inbox.css';
 
 export const InboxPage = () => {
-
-    const [emailList, setEmailList] = useState([])
-
-    useEffect(() => {
-        getInboxEmails()
-    }, [])
-
-    const getInboxEmails = async () => {
-        try {
-            const host = import.meta.env.VITE_API_HOST
-            const port = import.meta.env.VITE_API_PORT
-
-            const response = await fetch(`${host}:${port}/API/v1/inbox`)
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status} ${response.statusText}`);
-            }
-            const emailList = await response.json();
-            setEmailList(emailList.data)
-            console.log(emailList.data)
-        } catch (e) {
-            console.log("error", e)
-        }
-    }
-
     return (
-        <section>
-            {
-                emailList.map(({
-                    id,
-                    remitente_id, 
-                    destinatario_id,
-                    asunto,
-                    contenido,
-                    leido,
-                    created_at
-                }) => (
-                    <div key={id}>
-                        <p>{remitente_id}</p>
-                        <p>{contenido}</p>
-                    </div>
-                ))
-            }
-        </section>
-    )
-}
+        <main className="inboxPage">
+            <nav className="columnNav">
+                <NavLink to="inbox" className={({ isActive }) => (isActive ? 'active' : '')}>
+                <span className="material-symbols-outlined">inbox</span>
+                    Recibidos
+                </NavLink>
+                <NavLink to="archived" className={({ isActive }) => (isActive ? 'active' : '')}>
+                <span className="material-symbols-outlined">bookmark</span>
+                    Archivados
+                </NavLink>
+                <NavLink to="deleted" className={({ isActive }) => (isActive ? 'active' : '')}>
+                <span className="material-symbols-outlined">folder_delete</span>
+                    Eliminados
+                </NavLink>
+                <NavLink to="sent" className={({ isActive }) => (isActive ? 'active' : '')}>
+                <span className="material-symbols-outlined">send</span>
+                    Enviados
+                </NavLink>
+            </nav>
+            <section className="contentSection">
+                <Routes>
+                    {/* Ruta principal para el componente EmailsModal */}
+                    <Route path="/*" element={<EmailsModal type="inbox" />} >
+                        {/* Rutas anidadas */}
+                        <Route index element={<EmailsModal type="inbox" />} />
+                        <Route path="archived" element={<EmailsModal type="archived" />} />
+                        <Route path="deleted" element={<EmailsModal type="deleted" />} />
+                        <Route path="sent" element={<EmailsModal type="sent" />} />
+                    </Route>
+                </Routes>
+            </section>
+        </main>
+    );
+};

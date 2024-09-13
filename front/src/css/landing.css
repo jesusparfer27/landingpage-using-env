@@ -1,4 +1,3 @@
-/* Aplica la fuente Roboto a todo el contenido */
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -7,7 +6,6 @@ body {
   padding: 0;
 }
 
-/* Mantén las reglas básicas */
 .roboto-regular {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -26,13 +24,12 @@ html,
   flex-direction: column;
 }
 
-/* Ajuste en .flexSections para centrar */
 .flexSections {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Centra verticalmente */
-  justify-content: center; /* Centra horizontalmente */
-  padding: 0 5%; /* Reduce el padding para acercar los elementos */
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
 }
 
 .flexSections.right .leftSection {
@@ -51,46 +48,43 @@ html,
   order: 2;
 }
 
-/* Ajuste en .sectionContent para centrar */
 .sectionContent {
   display: flex;
   flex-direction: row;
-  justify-content: center; /* Centra los elementos horizontalmente */
+  justify-content: center;
   width: 100%;
-  max-width: 1200px; /* Ajusta según el ancho deseado */
-  margin: 0 auto; /* Centra el contenido en el contenedor */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .textWhite {
   color: white;
 }
 
-/* Ajuste para el grosor y el ancho de los textos */
 .textContent h1, .textContent p {
-  font-weight: 300; /* Cambia el grosor de la fuente */
-  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
-  width: 100%; /* Ajusta el ancho del texto si es necesario */
+  font-weight: 300;
+  letter-spacing: .05rem;
+  width: 100%;
   display: flex;
-  margin-left: 0; /* Elimina el margen izquierdo */
+  margin-left: 0;
   
 }
 
 .textContent h1 {
-  font-weight: 400; /* Ajusta el grosor del título a ligeramente más grueso */
-  letter-spacing: .05rem; /* Ajusta el espaciado entre letras si es necesario */
+  font-weight: 400;
+  letter-spacing: .05rem;
   font-size: 2.2rem;
 }
 
 .textContent p {
-  font-weight: 250; /* Mantiene el grosor de la fuente para el párrafo */
+  font-weight: 250;
   font-size: 1.5rem;
 }
 
-/* Ajustes en las secciones */
 .leftSection, .rightSection {
   flex: 1;
-  padding-right: 8%; /* Reduce padding para centrar mejor */
-  padding-left: 8%; /* Reduce padding para centrar mejor */
+  padding-right: 8%;
+  padding-left: 8%;
   align-content: center;
 }
 
@@ -101,39 +95,42 @@ html,
   display: block;
 }
 
-/* Estilos para iconos */
 .iconWhite {
-  filter: brightness(0) invert(1); /* Cambia a blanco */
+  filter: brightness(0) invert(1);
 }
 
 .iconBlack {
-  filter: brightness(0); /* Cambia a negro */
+  filter: brightness(0);
 }
 
 .textContent {
   display: flex;
-  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-  gap: 1.5rem; /* Ajusta el valor según el espacio que desees entre título, contenido y icono */
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 15rem;
 }
 
-/* Opcional: Si necesitas un tamaño fijo, usa propiedades específicas */
+.textContent.no-padding {
+  padding-bottom: 0;
+}
+
 .textContent .iconWhite, .textContent .iconBlack {
-  width: 40px; /* Cambia a los valores anteriores */
-  height: 40px; /* Cambia a los valores anteriores */
+  width: 40px;
+  height: 40px;
 }
 
 .appStoreContainer {
   display: flex;
-  align-items: flex-start; /* Opcional: centrar horizontalmente */
-  gap: 2rem; /* Ajusta el espacio entre las imágenes */
-  margin-top: 1.5rem; /* Opcional: añadir un margen superior si es necesario */
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
 
 .appImageContainer {
   display: flex;
-  align-items: flex-start; /* Alinea la imagen al inicio del contenedor */
-  gap: 2rem; /* Ajusta el espacio entre las imágenes si es necesario */
-  margin-bottom: 1.5rem; /* Opcional: añade un margen superior si es necesario */
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
 .pWithMargin {
   margin-left: 0;
@@ -141,7 +138,7 @@ html,
 }
 
 .pNoMargin {
-  margin: 0; /* Sin márgenes */
+  margin: 0;
 }
 
 /* SEGUNDA SECCIÓN */
@@ -167,19 +164,15 @@ html,
   padding-left: 2.2rem;
 }
 
-.advantagesImgBlocks {
-
-}
-
 .textAppAdvantages {
   font-size: 1.6rem;
 }
 
 .triageH1 {
-  margin-top: 11rem;
-  margin-bottom: 5rem;
+  margin-top: 9rem;
+  margin-bottom: 4rem;
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 25rem;
 }
 
@@ -205,6 +198,7 @@ html,
   gap: 2rem;
   margin-right: 2rem;
   margin-left: 2rem;
+  margin-bottom: 6rem;
 }
 
 .commentText {
@@ -213,21 +207,52 @@ html,
   margin-bottom: 2rem;
 }
 
-.imgComments {
-
-}
-
-footer {
+.footerFlexRow {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
 }
 
-.footerFlex {
+.footerFlexEnd {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.footerFlexStart {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+
+.linksMenu {
   width: 100%;
   display: flex;
   justify-content: center;
+  font-size: 1.3rem;
 }
 
-.footerBlock {
-  
+.linksMenu {
+  display: flex; 
+  gap: 2rem;
+}
+
+.linksMenu a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.linksMenu a:hover {
+  color: #007bff;
 }

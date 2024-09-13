@@ -1,0 +1,32 @@
+.emailModal {
+    background-color: white;
+    border-radius: .6rem;
+    margin: 1rem;
+    margin-right: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.emailInformation {
+    display: flex;
+}
+
+.columnNav {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.emailInformation {
+    padding: 1rem;
+}
+
+.buttonsModal {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.buttonsModal:hover{
+    color: gray;
+}

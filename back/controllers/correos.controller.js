@@ -45,20 +45,21 @@ export const getAllEmails = async (req, res) => {
     try {
         const query = 'SELECT * FROM correos';
         const [filas] = await mysqldb.query(query);
+        console.log('Correos obtenidos:', filas);
         res.status(200).json({
             msg: "Lista de correos obtenida con éxito",
             success: "ok",
             data: filas
         });
-        console.log(filas)
     } catch (error) {
-        console.error("Error al obtener correos: ", error);
+        console.error("Error al obtener correos: ", error.message); // Detalle del mensaje de error
         res.status(500).json({
             msg: "Error al obtener los correos",
             success: "error",
             error: error.message
         });
     }
+    
 };
 
 
