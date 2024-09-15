@@ -8,4 +8,5 @@ import { mysqlConfig } from '../config/config.js';
 
 const mysqldb = await mysql.createConnection(mysqlConfig)
 
+
 export default mysqldb

@@ -13,5 +13,5 @@ export const mysqlConfig = {
     port: process.env.DB_PORT || 3306,
     user: process.env.DB_USER || "root",
     password: process.env.DB_PASS || "",
-    database: process.env.DB_NAME || "db_tuBaseDeDatos"
+    database: process.env.DB_NAME || "app_correos"
 };

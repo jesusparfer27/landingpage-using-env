@@ -16,28 +16,32 @@ const ModalLogin = () => {
         }
     };
 
+    // Función para manejar el login
     const handleLogin = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
         try {
             const response = await fetch('http://localhost:3000/API/v1/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password }) // Pasar email y password
             });
 
             const data = await response.json();
             if (data.success) {
-                // Redirige al endpoint /inbox si el login es exitoso
-                navigate('/inbox');
-                closeModal();
+                // Guarda el token en localStorage o cookie
+                localStorage.setItem('authToken', data.token);
+                
+                // Redirige a la bandeja de entrada o cualquier otra ruta
+                navigate('/inbox'); // Redirige a la página de recibidos
+                closeModal(); // Cerrar el modal después del login exitoso
             } else {
-                // Muestra un error si las credenciales son incorrectas
-                setError(data.msg);
+                setError(data.msg); // Mostrar mensaje de error en la interfaz
             }
         } catch (error) {
-            setError('Error al iniciar sesión. Inténtalo de nuevo más tarde.');
+            console.error("Error en el login:", error);
+            setError('Ocurrió un error al iniciar sesión. Inténtalo de nuevo.'); // Mensaje de error en caso de fallo
         }
     };
 
@@ -45,7 +49,7 @@ const ModalLogin = () => {
         <div className="modalOverlay" onClick={handleClickOutside}>
             <article className="modalContainer">
                 <h3>Log In</h3>
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleLogin}> {/* Se pasa handleLogin aquí */}
                     <div className="emailInput">
                         <p>Introduce your email</p>
                         <input
