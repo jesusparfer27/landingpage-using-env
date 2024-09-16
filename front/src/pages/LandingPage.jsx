@@ -19,7 +19,9 @@ export const LandingPage = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/API/v1/json-data');
+            const host = import.meta.env.VITE_API_HOST;
+            const port = import.meta.env.VITE_API_PORT;
+            const response = await fetch(`${host}:${port}/API/v1/json-data`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }

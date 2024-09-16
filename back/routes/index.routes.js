@@ -9,6 +9,7 @@ const router = Router();
 router.get('/json-data', getLanding);
 router.get('/inbox', getEmailsByType);
 router.get('/inbox', getAllEmails)
+
 router.post('/login', loginUser); // Añade la ruta de login
 router.post('/emails/:id/delete', markAsDeleted);
 router.post('/emails/:id/archive', markAsArchived);
