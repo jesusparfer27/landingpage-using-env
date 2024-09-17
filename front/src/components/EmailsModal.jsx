@@ -32,13 +32,14 @@ export const EmailsModal = ({ type }) => {
 
             // Obtén el token del localStorage
             const token = localStorage.getItem('authToken');
+            const response = await fetch(`http://localhost:3000/${endpoint}`);
         console.log('Token:', token); // Verifica que el token está presente
-
-        const response = await fetch(`http://localhost:3000/${endpoint}`, {
-            headers: {
-                'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
-            }
-        });
+       
+        // const response = await fetch(`http://localhost:3000/${endpoint}`, {
+        //     headers: {
+        //         'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+        //     }
+        // });
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
