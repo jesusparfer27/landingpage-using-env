@@ -1,16 +1,6 @@
 import bcrypt from 'bcrypt';
 import mysqldb from '../data/mysqldb.js';
 
-const hashPassword = async (password) => {
-    try {
-        const saltRounds = 10;
-        return await bcrypt.hash(password, saltRounds);
-    } catch (error) {
-        console.error("Error al hashear la contraseña:", error);
-        throw error; // Para propagar el error hacia la función que lo llame
-    }
-};
-
 const updatePasswords = async () => {
     try {
         const [users] = await mysqldb.query('SELECT id, password FROM usuarios');

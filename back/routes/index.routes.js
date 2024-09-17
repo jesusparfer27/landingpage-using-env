@@ -1,17 +1,21 @@
 import { Router } from 'express';
-import { getEmailsByType, loginUser, getAllEmails } from '../controllers/correos.controller.js';
+import { fetchEmailsByType, markAsDeleted, markAsArchived } from '../controllers/correos.controller.js';
 import { getLanding } from '../controllers/landing.controller.js';
-import { markAsArchived, markAsDeleted } from '../controllers/correos.controller.js';
+import { loginUser } from '../controllers/login.controller.js';
+import { authenticateToken } from '../middleware/auth.js';
 // import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
 
 router.get('/json-data', getLanding);
-router.get('/inbox', getEmailsByType);
-router.get('/inbox', getAllEmails)
+router.get('/archived', authenticateToken, fetchEmailsByType);
+router.get('/delete', authenticateToken, fetchEmailsByType);
+router.get('/inbox', authenticateToken, fetchEmailsByType);
+router.get('/sent', authenticateToken, fetchEmailsByType);
+
 
 router.post('/login', loginUser); // Añade la ruta de login
-router.post('/emails/:id/delete', markAsDeleted);
-router.post('/emails/:id/archive', markAsArchived);
+router.post('/emails/:id/delete', authenticateToken, markAsDeleted);
+router.post('/emails/:id/archive', authenticateToken, markAsArchived);
 
 export default router;

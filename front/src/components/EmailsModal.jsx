@@ -1,5 +1,4 @@
-// EmailsModal.js
-import '../css/emails.css'
+import '../css/emails.css';
 import { useState, useEffect } from 'react';
 
 export const EmailsModal = ({ type }) => {
@@ -11,32 +10,40 @@ export const EmailsModal = ({ type }) => {
 
     const fetchEmailsByType = async (type) => {
         try {
-            const host = import.meta.env.VITE_API_HOST;
-            const port = import.meta.env.VITE_API_PORT;
             let endpoint = '';
 
             // Cambia el endpoint según el tipo
             switch (type) {
                 case 'inbox':
-                    endpoint = '/API/v1/inbox';
+                    endpoint = 'API/v1/inbox';
                     break;
                 case 'archived':
-                    endpoint = '/API/v1/archived';
+                    endpoint = 'API/v1/archived';
                     break;
                 case 'deleted':
-                    endpoint = '/API/v1/deleted';
+                    endpoint = 'API/v1/deleted';
                     break;
                 case 'sent':
-                    endpoint = '/API/v1/sent';
+                    endpoint = 'API/v1/sent';
                     break;
                 default:
-                    endpoint = '/API/v1/inbox';
+                    endpoint = 'API/v1/inbox';
             }
 
-            const response = await fetch(`${host}:${port}${endpoint}`);
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            // Obtén el token del localStorage
+            const token = localStorage.getItem('authToken');
+        console.log('Token:', token); // Verifica que el token está presente
+
+        const response = await fetch(`http://localhost:3000/${endpoint}`, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
             }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
             const emailList = await response.json();
             setEmailList(emailList.data);
             console.log(emailList.data);
@@ -47,10 +54,15 @@ export const EmailsModal = ({ type }) => {
 
     const handleDelete = async (id) => {
         try {
+            const token = localStorage.getItem('authToken'); // Obtén el token del localStorage
+
             const response = await fetch(`/API/v1/emails/${id}/delete`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+                }
             });
-    
+
             if (response.ok) {
                 fetchEmailsByType(type); // Actualiza la lista de correos
             } else {
@@ -60,13 +72,18 @@ export const EmailsModal = ({ type }) => {
             console.log("Error", e);
         }
     };
-    
+
     const handleArchive = async (id) => {
         try {
+            const token = localStorage.getItem('authToken'); // Obtén el token del localStorage
+
             const response = await fetch(`/API/v1/emails/${id}/archive`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+                }
             });
-    
+
             if (response.ok) {
                 fetchEmailsByType(type); // Actualiza la lista de correos
             } else {
@@ -76,7 +93,6 @@ export const EmailsModal = ({ type }) => {
             console.log("Error", e);
         }
     };
-    
 
     return (
         <section className='emailModal'>

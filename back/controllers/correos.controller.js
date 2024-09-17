@@ -7,80 +7,6 @@ const responseAPI = {
     status: "ok"
 };
 
-// Endpoint para obtener todos los correos
-export const getAllEmails = async (req, res) => {
-    const { userId } = req; // Asegúrate de que el id del usuario esté disponible en la solicitud
-
-    try {
-        const query = 'SELECT * FROM correos WHERE destinatario_id = ?';
-        const [filas] = await mysqldb.query(query, [userId]);
-        console.log('Correos obtenidos:', filas);
-        res.status(200).json({
-            msg: "Lista de correos obtenida con éxito",
-            success: "ok",
-            data: filas
-        });
-    } catch (error) {
-        console.error("Error al obtener correos: ", error.message);
-        res.status(500).json({
-            msg: "Error al obtener los correos",
-            success: "error",
-            error: error.message
-        });
-    }
-};
-
-// Función para iniciar sesión del usuario
-export const loginUser = async (req, res) => {
-    const { email, password } = req.body; // Recoge email y contraseña del cuerpo de la solicitud
-
-    try {
-        const query = 'SELECT * FROM usuarios WHERE email = ?';
-        const [rows] = await mysqldb.query(query, [email]);
-
-        if (rows.length > 0) {
-            const user = rows[0];
-
-            try {
-                // Compara la contraseña proporcionada con la hasheada de la base de datos
-                // const isPasswordCorrect = await bcrypt.compare(password, user.password);
-                const isPasswordCorrect = user.password == password ? true : false;
-
-                if (isPasswordCorrect) {
-                    res.status(200).json({
-                        msg: "Inicio de sesión exitoso",
-                        success: true
-                    });
-                } else {
-                    res.status(401).json({
-                        msg: "aCorreo electrónico o contraseña incorrectos",
-                        success: false
-                    });
-                }
-            } catch (bcryptError) {
-                console.error("Error al comparar contraseñas:", bcryptError);
-                res.status(500).json({
-                    msg: "Error interno al validar la contraseña",
-                    success: false,
-                    error: bcryptError.message
-                });
-            }
-        } else {
-            res.status(401).json({
-                msg: "bCorreo electrónico o contraseña incorrectos",
-                success: false
-            });
-        }
-    } catch (error) {
-        console.error("Error al iniciar sesión: ", error);
-        res.status(500).json({
-            msg: "Error al iniciar sesión",
-            success: false,
-            error: error.message
-        });
-    }
-};
-
 // Función para marcar un correo como eliminado
 export const markAsDeleted = async (req, res) => {
     const { id } = req.params;
@@ -116,39 +42,50 @@ export const markAsArchived = async (req, res) => {
 };
 
 // Función para obtener correos por tipo (archivados, eliminados, etc.)
-export const getEmailsByType = async (req, res) => {
-    const { type } = req.query;
-    const userId = req.userId;
-
+export const fetchEmailsByType = async (type) => {
     try {
-        let query = 'SELECT * FROM correos WHERE destinatario_id = ?';
+        let endpoint = '';
 
-        if (type === 'archived') {
-            query += ' AND archivado = 1';
-        } else if (type === 'deleted') {
-            query += ' AND eliminado = 1';
-        } else if (type === 'inbox') {
-            query += ' AND archivado = 0 AND eliminado = 0';
-        } else if (type === 'sent') {
-            query = 'SELECT * FROM correos WHERE remitente_id = ?';
+        // Cambia el endpoint según el tipo
+        switch (type) {
+            case 'inbox':
+                endpoint = 'API/v1/inbox';
+                break;
+            case 'archived':
+                endpoint = 'API/v1/archived';
+                break;
+            case 'deleted':
+                endpoint = 'API/v1/deleted';
+                break;
+            case 'sent':
+                endpoint = 'API/v1/sent';
+                break;
+            default:
+                endpoint = 'API/v1/inbox';
         }
 
-        const [rows] = await mysqldb.query(query, [userId]);
+        // Obtén el token del localStorage
+        const token = localStorage.getItem('authToken');
+        console.log("Token:", token); // Agrega esto para depuración
+        
+        const response = await fetch(`http://localhost:3000/${endpoint}`, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+            }
+        });
 
-        res.status(200).json({
-            msg: "Correos obtenidos con éxito",
-            success: true,
-            data: rows
-        });
-    } catch (error) {
-        console.error("Error al obtener correos por tipo:", error);
-        res.status(500).json({
-            msg: "Error al obtener correos",
-            success: false,
-            error: error.message
-        });
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const emailList = await response.json();
+        setEmailList(emailList.data);
+        console.log(emailList.data);
+    } catch (e) {
+        console.log("Error", e);
     }
 };
+
 
 // Función para guardar un nuevo correo
 export const saveEmail = (req, res) => {

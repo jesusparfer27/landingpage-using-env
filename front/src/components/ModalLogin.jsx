@@ -30,7 +30,7 @@ const ModalLogin = () => {
 
             const data = await response.json();
             if (data.success) {
-                // Guarda el token en localStorage o cookie
+                // Guarda el token en localStorage
                 localStorage.setItem('authToken', data.token);
                 
                 // Redirige a la bandeja de entrada o cualquier otra ruta

@@ -1,6 +1,6 @@
 // InboxPage.jsx
 import { NavLink, Routes, Route } from 'react-router-dom';
-import { EmailsModal } from '../components/EmailsModal'; // Importa tu componente EmailsModal
+import { EmailsModal } from '../components/EmailsModal'; // Componente para mostrar correos
 import '../css/inbox.css';
 
 export const InboxPage = () => {
@@ -8,40 +8,48 @@ export const InboxPage = () => {
         <main className="inboxPage">
             <nav className="columnNav">
                 <NavLink 
-                    to="/inbox" 
+                    to="inbox"
                     className={({ isActive }) => (isActive ? 'active' : '')}
                 >
                     <span className="material-symbols-outlined">inbox</span>
                     Recibidos
                 </NavLink>
                 <NavLink 
-                    to="/archived" 
+                    to="starred"
+                    className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                    <span className="material-symbols-outlined">star</span>
+                    Destacados
+                </NavLink>
+                <NavLink 
+                    to="sent"
+                    className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                    <span className="material-symbols-outlined">send</span>
+                    Enviados
+                </NavLink>
+                <NavLink 
+                    to="archived"
                     className={({ isActive }) => (isActive ? 'active' : '')}
                 >
                     <span className="material-symbols-outlined">bookmark</span>
                     Archivados
                 </NavLink>
                 <NavLink 
-                    to="/deleted" 
+                    to="deleted"
                     className={({ isActive }) => (isActive ? 'active' : '')}
                 >
                     <span className="material-symbols-outlined">folder_delete</span>
                     Eliminados
                 </NavLink>
-                <NavLink 
-                    to="/sent" 
-                    className={({ isActive }) => (isActive ? 'active' : '')}
-                >
-                    <span className="material-symbols-outlined">send</span>
-                    Enviados
-                </NavLink>
             </nav>
             <section className="contentSection">
                 <Routes>
-                    <Route path="/inbox" element={<EmailsModal type="inbox" />} />
-                    <Route path="/archived" element={<EmailsModal type="archived" />} />
-                    <Route path="/deleted" element={<EmailsModal type="deleted" />} />
-                    <Route path="/sent" element={<EmailsModal type="sent" />} />
+                    <Route path="inbox" element={<EmailsModal type="inbox" />} />
+                    <Route path="starred" element={<EmailsModal type="starred" />} />
+                    <Route path="sent" element={<EmailsModal type="sent" />} />
+                    <Route path="archived" element={<EmailsModal type="archived" />} />
+                    <Route path="deleted" element={<EmailsModal type="deleted" />} />
                 </Routes>
             </section>
         </main>

@@ -1,7 +1,7 @@
 // router.js o routes.js
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout";
-import { InboxPage } from "../pages/InboxPage";
+import { InboxPage } from "../pages/inboxPage";
 import { ErrorPage } from "../pages/ErrorPage";
 import { LandingPage } from "../pages/LandingPage";
 

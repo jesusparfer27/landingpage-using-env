@@ -13,8 +13,9 @@ const hashPassword = async (password) => {
 };
 
 // Función para validar el login de usuario
+
 export const loginUser = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body; // Recoge email y contraseña del cuerpo de la solicitud
 
     try {
         const query = 'SELECT * FROM usuarios WHERE email = ?';
@@ -22,7 +23,9 @@ export const loginUser = async (req, res) => {
 
         if (rows.length > 0) {
             const user = rows[0];
+
             try {
+                // Compara la contraseña proporcionada con la hasheada de la base de datos
                 // const isPasswordCorrect = await bcrypt.compare(password, user.password);
                 const isPasswordCorrect = user.password == password ? true : false;
 
@@ -33,21 +36,21 @@ export const loginUser = async (req, res) => {
                     });
                 } else {
                     res.status(401).json({
-                        msg: "CLAVE MAL Correo electrónico o contraseña incorrectos",
+                        msg: "aCorreo electrónico o contraseña incorrectos",
                         success: false
                     });
                 }
-            } catch (error) {
-                console.error("Error al comparar las contraseñas:", error);
+            } catch (bcryptError) {
+                console.error("Error al comparar contraseñas:", bcryptError);
                 res.status(500).json({
-                    msg: "Error interno al validar las credenciales",
+                    msg: "Error interno al validar la contraseña",
                     success: false,
-                    error: error.message
+                    error: bcryptError.message
                 });
             }
         } else {
             res.status(401).json({
-                msg: "NO HAY EMAIL Correo electrónico o contraseña incorrectos",
+                msg: "bCorreo electrónico o contraseña incorrectos",
                 success: false
             });
         }

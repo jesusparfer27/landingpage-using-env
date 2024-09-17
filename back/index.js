@@ -24,6 +24,14 @@ app.get('/', ( req , res ) => {
 app.use("/API/v1/", apiRoutes)
 
 
+app.use(cors({
+    origin: 'http://localhost:3000', // O el dominio de tu frontend
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Iniciando API en ${HOST}:${PORT}`)
