@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'; // Asegúrate de que bcrypt esté importado
-import mysqldb from '../data/mysqldb.js'; // Importa la conexión a MySQL
+// import mysqldb from '../data/mysqldb.js'; // Importa la conexión a MySQL
 
 const responseAPI = {
     data: [],
@@ -141,3 +141,19 @@ export const getSavedEmails = (req, res) => {
         });
     }
 };
+
+export const answerEmail = (req, res) => {
+
+}
+
+export const createEmail = (req, res) => {
+
+}
+
+export const getEmailById = (req, res) => {
+
+}
+
+export const updateEmail = (req, res) => {
+    
+}

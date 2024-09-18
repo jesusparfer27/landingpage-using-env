@@ -15,3 +15,6 @@ export const mysqlConfig = {
     password: process.env.DB_PASS || "",
     database: process.env.DB_NAME || "app_correos"
 };
+
+// Configuración de MongoDB
+export const mongodbUri = process.env.MONGODB_URI;

@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import mysqldb from '../data/mysqldb.js';
+// import mysqldb from '../data/mysqldb.js';
 
 const updatePasswords = async () => {
     try {

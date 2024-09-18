@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { HOST, PORT } from './config/config.js'
+import mongoRoutes from './routes/mongodb.routes.js'
 import apiRoutes from './routes/index.routes.js'
 
 const app = express()
@@ -22,6 +23,7 @@ app.get('/', ( req , res ) => {
 })
 
 app.use("/API/v1/", apiRoutes)
+app.use('/API/v1/mongo', mongoRoutes)
 
 
 app.use(cors({
