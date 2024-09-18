@@ -63,27 +63,3 @@ export const loginUser = async (req, res) => {
         });
     }
 };
-
-// Función para registrar un nuevo usuario
-export const registerUser = async (req, res) => {
-    const { nombre, email, password } = req.body;
-
-    try {
-        // Hashear la contraseña antes de almacenarla
-        const hashedPassword = await hashPassword(password);
-        const query = 'INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)';
-        await mysqldb.query(query, [nombre, email, hashedPassword]);
-
-        res.status(201).json({
-            msg: "Usuario registrado con éxito",
-            success: true
-        });
-    } catch (error) {
-        console.error("Error al registrar usuario:", error);
-        res.status(500).json({
-            msg: "Error al registrar usuario",
-            success: false,
-            error: error.message
-        });
-    }
-};
