@@ -6,7 +6,11 @@ import apiRoutes from './routes/index.routes.js'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5174', // Asegúrate de ajustar según tu frontend
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 app.use(express.json())
 app.use(express.static('public'))
 

@@ -15,19 +15,19 @@ export const EmailsModal = ({ type }) => {
             // Cambia el endpoint según el tipo
             switch (type) {
                 case 'inbox':
-                    endpoint = 'API/v1/inbox';
+                    endpoint = '/inbox';
                     break;
                 case 'archived':
-                    endpoint = 'API/v1/archived';
+                    endpoint = '/archived';
                     break;
                 case 'deleted':
-                    endpoint = 'API/v1/deleted';
+                    endpoint = '/deleted';
                     break;
                 case 'sent':
-                    endpoint = 'API/v1/sent';
+                    endpoint = '/sent';
                     break;
                 default:
-                    endpoint = 'API/v1/inbox';
+                    endpoint = '/inbox';
             }
 
             // Obtén el token del localStorage

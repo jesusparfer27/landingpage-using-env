@@ -1,11 +1,42 @@
 import bcrypt from 'bcrypt'; // Asegúrate de que bcrypt esté importado
-// import mysqldb from '../data/mysqldb.js'; // Importa la conexión a MySQL
+import mysqldb from '../data/mysqldb.js'; // Importa la conexión a MySQL
 
 const responseAPI = {
     data: [],
     msg: "",
     status: "ok"
 };
+
+// Controlador para obtener todos los correos electrónicos
+export const getAllEmails = async (req, res) => {
+    const userId = req.user.id; // Asumiendo que el ID del usuario autenticado está en req.user
+
+    try {
+        const [emails] = await mysqldb.query('SELECT * FROM correos WHERE destinatario_id = ?', [userId]);
+
+        if (emails.length === 0) {
+            return res.status(204).json({
+                success: true,
+                msg: 'No se encontraron correos electrónicos.',
+                data: []
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            msg: 'Correos electrónicos obtenidos con éxito.',
+            data: emails
+        });
+    } catch (error) {
+        console.error("Error al obtener los correos electrónicos:", error);
+        res.status(500).json({
+            success: false,
+            msg: 'Error al obtener los correos electrónicos.',
+            error: error.message
+        });
+    }
+};
+
 
 // Función para marcar un correo como eliminado
 export const markAsDeleted = async (req, res) => {
