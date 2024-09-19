@@ -6,12 +6,8 @@ import apiRoutes from './routes/index.routes.js'
 
 const app = express()
 
-app.use(cors({
-    origin: 'http://localhost:5174', // Asegúrate de ajustar según tu frontend
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}))
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
 
 app.get('/', ( req , res ) => {
@@ -26,17 +22,14 @@ app.get('/', ( req , res ) => {
     res.status(200).send(landingHTML)
 })
 
+// Rutas para mysql
 app.use("/API/v1/", apiRoutes)
+
+// Rutas para mongoDB
 app.use('/API/v1/mongo', mongoRoutes)
 
 
-app.use(cors({
-    origin: 'http://localhost:3000', // O el dominio de tu frontend
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-
+app.use(cors());
 
 
 app.listen(PORT, () => {

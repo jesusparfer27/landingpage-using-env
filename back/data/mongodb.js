@@ -55,20 +55,28 @@ const emailSchema = new mongoose.Schema({
     isLeido: {
         type: Boolean,
         default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    adress: adressSchema
+    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now
+    // },
+    // adress: adressSchema
+}, {
+    timestamps: true,
+    strict: false
 })
+
+// Opciones de Mongoose Schemas
+// - {timestamps: true} // me agrega los campo de createdAt y updateAt
+// - { strict: false } me permite utilizar campos adicionales
+// - { versionKey: false } desactiva el control de acciones que tiene interno de mongoose
 
 // crear nuestros modelos
 
 const User = mongoose.model('User', userSchema);
 const Email = mongoose.model('Email', emailSchema)
 
-// se crearán automaticamente las colecciones si no existen pero en minúsculas y plural
+// se crearán automaticamente las COLECCIONES si no existen pero en minúsculas y plural
 // User --> users
 // Email --> emails
 
