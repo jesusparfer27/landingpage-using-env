@@ -1,5 +1,5 @@
-import { Email, connectDB } from '../data/mongodb.js'
-// import { User, Email} from '../data/mongodb.js'
+import { connectDB } from '../data/mongodb.js'
+import { User, Email} from '../data/mongodb.js'
 
 // Me conecto a mongoDB
 connectDB();

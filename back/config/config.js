@@ -6,7 +6,7 @@ if (result.error) {
 }
 
 export const HOST = process.env.HOST || "http://localhost";
-export const PORT = process.env.PORT || 3000;
+export const PORT = process.env.PORT || 3001;
 
 export const mysqlConfig = {
     host: process.env.DB_HOST || "localhost",

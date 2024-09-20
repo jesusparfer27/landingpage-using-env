@@ -70,7 +70,7 @@ export const LandingPage = () => {
                                                     marginTop: !isMockupAtTop ? '2rem' : '0',
                                                     top: isMockupAtTop ? '0' : 'auto',
                                                 }}
-                                                src={`http://localhost:3000/${mockupImg}`}
+                                                src={`http://localhost:3001/${mockupImg}`}
                                                 alt="Mockup"
                                             />
                                         </div>
@@ -78,7 +78,7 @@ export const LandingPage = () => {
                                             <div className="appImageContainer">
                                                 {appImage && (
                                                     <img
-                                                        src={`http://localhost:3000/${appImage}`}
+                                                        src={`http://localhost:3001/${appImage}`}
                                                         alt="App"
                                                         className="roboto-regular"
                                                         style={{ maxWidth: '100%' }}
@@ -88,7 +88,7 @@ export const LandingPage = () => {
                                             <div className={`textContent roboto-regular ${index === 0 ? 'no-padding' : ''}`}>
                                                 {iconImage && (
                                                     <img
-                                                        src={`http://localhost:3000/${iconImage}`}
+                                                        src={`http://localhost:3001/${iconImage}`}
                                                         alt="Icon"
                                                         className={isIconImageWhite ? 'iconWhite' : 'iconBlack'}
                                                         style={{ maxWidth: '100%' }}
@@ -102,7 +102,7 @@ export const LandingPage = () => {
                                             <div className="appStoreContainer">
                                                 {imgAppStore && (
                                                     <img
-                                                        src={`http://localhost:3000/${imgAppStore}`}
+                                                        src={`http://localhost:3001/${imgAppStore}`}
                                                         alt="App Store"
                                                         className="roboto-regular"
                                                         style={{ maxWidth: '100%' }}
@@ -117,7 +117,7 @@ export const LandingPage = () => {
                                             <div className="appImageContainer">
                                                 {appImage && (
                                                     <img
-                                                        src={`http://localhost:3000/${appImage}`}
+                                                        src={`http://localhost:3001/${appImage}`}
                                                         alt="App"
                                                         className="roboto-regular"
                                                         style={{ maxWidth: '100%' }}
@@ -127,7 +127,7 @@ export const LandingPage = () => {
                                             <div className={`textContent roboto-regular ${index === 0 ? 'no-padding' : ''}`}>
                                                 {iconImage && (
                                                     <img
-                                                        src={`http://localhost:3000/${iconImage}`}
+                                                        src={`http://localhost:3001/${iconImage}`}
                                                         alt="Icon"
                                                         className={isIconImageWhite ? 'iconWhite' : 'iconBlack'}
                                                         style={{ maxWidth: '100%' }}
@@ -141,7 +141,7 @@ export const LandingPage = () => {
                                             <div className="appStoreContainer">
                                                 {imgAppStore && (
                                                     <img
-                                                        src={`http://localhost:3000/${imgAppStore}`}
+                                                        src={`http://localhost:3001/${imgAppStore}`}
                                                         alt="App Store"
                                                         className="roboto-regular"
                                                         style={{ maxWidth: '100%' }}
@@ -157,7 +157,7 @@ export const LandingPage = () => {
                                                     marginTop: !isMockupAtTop ? '2rem' : '0',
                                                     top: isMockupAtTop ? '0' : 'auto',
                                                 }}
-                                                src={`http://localhost:3000/${mockupImg}`}
+                                                src={`http://localhost:3001/${mockupImg}`}
                                                 alt="Mockup"
                                             />
                                         </div>
@@ -177,7 +177,7 @@ export const LandingPage = () => {
                     }) => (
                         <div className="advantagesBlocks" key={id} style={{ backgroundColor: color }}>
                             <div className="advantageImg">
-                                <img className="advantagesImgBlock" src={`http://localhost:3000/${advantagesImages}`} alt="" />
+                                <img className="advantagesImgBlock" src={`http://localhost:3001/${advantagesImages}`} alt="" />
                             </div>
 
                             <strong className={`textAppAdvantages ${isTextInWhite ? "textWhite" : ""}`}>{content}</strong>
@@ -195,7 +195,7 @@ export const LandingPage = () => {
                         <div className="commentBlock" key={id}>
                             <p className="commentText">{comment}</p>
                             <div className="imgComments">
-                                <img src={`http://localhost:3000/${imageComment}`} alt="" />
+                                <img src={`http://localhost:3001/${imageComment}`} alt="" />
                             </div>
                         </div>
                     ))}
@@ -214,7 +214,7 @@ export const LandingPage = () => {
         {footerContent.slice(0, Math.ceil(footerContent.length / 2)).map(({ id, imageFooter }) => (
             <div className="footerFlex footerFlexEnd" key={id}>
                 <div className="footerBlock">
-                    <img src={`http://localhost:3000/${imageFooter}`} alt="" />
+                    <img src={`http://localhost:3001/${imageFooter}`} alt="" />
                 </div>
             </div>
         ))}
@@ -223,7 +223,7 @@ export const LandingPage = () => {
         {footerContent.slice(Math.ceil(footerContent.length / 2)).map(({ id, imageFooter }) => (
             <div className="footerFlex footerFlexStart" key={id}>
                 <div className="footerBlock">
-                    <img src={`http://localhost:3000/${imageFooter}`} alt="" />
+                    <img src={`http://localhost:3001/${imageFooter}`} alt="" />
                 </div>
             </div>
         ))}

@@ -18,16 +18,24 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body; // Recoge email y contraseña del cuerpo de la solicitud
 
     try {
+        console.log("Email recibido del frontend:", email);
+        console.log("Contraseña recibida del frontend:", password);
+
         const query = 'SELECT * FROM usuarios WHERE email = ?';
         const [rows] = await mysqldb.query(query, [email]);
 
+        console.log("Resultado de la consulta a la base de datos:", rows);
+
         if (rows.length > 0) {
             const user = rows[0];
+            console.log("Usuario encontrado:", user);
 
             try {
-                // Compara la contraseña proporcionada con la hasheada de la base de datos
+                // Compara la contraseña proporcionada con la almacenada en la base de datos
                 // const isPasswordCorrect = await bcrypt.compare(password, user.password);
                 const isPasswordCorrect = user.password == password ? true : false;
+
+                console.log("Resultado de la comparación de contraseñas:", isPasswordCorrect);
 
                 if (isPasswordCorrect) {
                     res.status(200).json({
@@ -36,7 +44,7 @@ export const loginUser = async (req, res) => {
                     });
                 } else {
                     res.status(401).json({
-                        msg: "aCorreo electrónico o contraseña incorrectos",
+                        msg: "Correo electrónico o contraseña incorrectos",
                         success: false
                     });
                 }
@@ -49,8 +57,9 @@ export const loginUser = async (req, res) => {
                 });
             }
         } else {
+            console.log("Usuario no encontrado con el correo:", email);
             res.status(401).json({
-                msg: "bCorreo electrónico o contraseña incorrectos",
+                msg: "Correo electrónico o contraseña incorrectos",
                 success: false
             });
         }
@@ -63,3 +72,4 @@ export const loginUser = async (req, res) => {
         });
     }
 };
+
